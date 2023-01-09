@@ -1,24 +1,28 @@
 import React from 'react';
-import { MdKeyboardArrowDown } from 'react-icons/md'
+import { SlArrowDown } from 'react-icons/sl'
 import './Dropdown.scss'
 
 type Dropdown = {
-    width: String,
-    color: String,
-    texto: String
-    options: String[] 
+    width: Number,
+    texto: String,
+    bg_color: String,
+    ft_color: String,
+    hasBorder: boolean,
+    options: String[],
 }
 
-const DrobDown: React.FunctionComponent<Dropdown> = ({ width, color, texto, options }) => {
+const DrobDown: React.FunctionComponent<Dropdown> = ({ width, texto, options, bg_color, ft_color, hasBorder }) => {
     return (
         <>
             <div className='dropdown-nav' style={{
-                width: `${width}%`,
-                backgroundColor: color ? `${color}` : 'transparent',
+                width: `${width}rem`,
+                backgroundColor: bg_color ? `${bg_color}` : 'transparent',
             }}>
                 <div className='dropdown-nav__icons'>
-                    <p>{texto}</p>
-                    {options.length === 0 ? "" : <MdKeyboardArrowDown />}
+                    <p className='dropdown-text' style={{ color: `${ft_color}`}}>
+                        <span>{texto}</span>
+                    </p>
+                    {options.length === 0 ? "" : <SlArrowDown style={{ color: `${ft_color}`, width: `${width}` }} />}
                 </div>
             </div>
         </>
